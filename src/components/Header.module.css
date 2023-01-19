@@ -1,0 +1,19 @@
+.AppHeader {
+    background-color: #333945;
+    min-height: 25vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(30px + 2vmin);
+    color: white;
+  }
+  
+  .logo {
+    margin-top: 0.3em;
+    margin-right: 0.2em;
+    height: 1.2em;
+    width:1.2em;
+    padding:0.15em;
+    background-color: aliceblue;
+    border-radius: 0.5em;
+  }

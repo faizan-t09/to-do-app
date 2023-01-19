@@ -1,0 +1,9 @@
+footer{
+    background-color: rgb(47, 54, 60);
+    color: whitesmoke;
+    width: 100vw;
+    position: absolute;
+    bottom :0;
+    top:auto;
+    padding:0.2em
+}
