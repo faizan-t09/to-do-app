@@ -1,5 +1,6 @@
 export interface taskType {
     id:number;
     title:string;
-    details?:string;
+    desc?:string;
+    due?:string;
 }
