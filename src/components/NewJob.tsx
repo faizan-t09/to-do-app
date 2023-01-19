@@ -1,5 +1,5 @@
 import React from "react";
-import style from './NewJob.module.css'
+import style from '../module-css/NewJob.module.css'
 
 export const NewJob = () => {
   return (
