@@ -5,22 +5,30 @@ import deleteIcon from "../assets/delete-icon.svg";
 
 interface TaskProps {
   element: taskType;
-  onClick: (task: taskType) => void;
+  toggleTask: (task: taskType) => void;
   deleteTask: (task: taskType) => void;
 }
 
 export const Task: React.FC<TaskProps> = ({
   element,
-  onClick,
+  toggleTask,
   deleteTask,
 }: TaskProps) => {
+
+  const handleDrag = (event : React.DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData("task",JSON.stringify(element));
+  }
+
   return (
+
     <div
       className={style.taskElement}
       onClick={(e) => {
         e.stopPropagation();
-        onClick(element);
+        toggleTask(element);
       }}
+      onDragStart={handleDrag}
+      draggable
     >
       <img
         src={deleteIcon}

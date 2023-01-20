@@ -47,13 +47,15 @@ export const MainPage: React.FC<MainPageProps> = ({
       <NewJob setTasks={setTasks} />
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
         <List
-          onClick={markTaskDone}
+          removeTask={markTaskDone}
+          addTask={unmarkTaskDone}
           title="Tasks"
           elements={tasks.filter((task) => task.done === false)}
           deleteTask={deleteTask}
         />
         <List
-          onClick={unmarkTaskDone}
+          removeTask={unmarkTaskDone}
+          addTask={markTaskDone}
           title="Finished"
           elements={tasks.filter((task) => task.done === true)}
           deleteTask={deleteTask}
