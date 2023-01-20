@@ -3,4 +3,5 @@ export interface taskType {
     title:string;
     desc?:string;
     due?:string;
+    done:boolean
 }

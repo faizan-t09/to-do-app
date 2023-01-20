@@ -8,7 +8,7 @@ interface NewJobProps{
 
 export const NewJob:React.FC<NewJobProps> = ({setTasks}:NewJobProps) => {
 
-  const [formData,setFormData] = useState<taskType>({id:0,title:"",desc:"",due:""})
+  const [formData,setFormData] = useState<taskType>({id:0,title:"",desc:"",due:"",done:false})
 
   const handleSubmit = (event:React.FormEvent) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ export const NewJob:React.FC<NewJobProps> = ({setTasks}:NewJobProps) => {
       return;
     let randomId = Math.floor(Math.random()*1000)
     setTasks((prev)=>[...prev,{...formData,id:randomId}]);
-    setFormData({id:0,title:"",desc:"",due:""})
+    setFormData({id:0,title:"",desc:"",due:"",done:false})
   } 
 
 

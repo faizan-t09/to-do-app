@@ -4,7 +4,7 @@
     padding: 0.4em;
     margin: 0 auto 0 auto;
     bottom:1.2em;
-    background-color: azure;
+    background-color: #FBF1D3;
     border: solid 1px black;
     max-width: 50vw;
     border-radius: 0.5em;
@@ -34,7 +34,7 @@
     font-size: 1em;
     border-radius: 0.2em;
     padding: 0.2em 2em 0.2em 2em;
-    background-color: rgb(77, 99, 99);
+    background-color: #fb9d39;
     color: whitesmoke;
     cursor: pointer;
 }
