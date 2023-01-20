@@ -39,7 +39,7 @@ export const NewJob:React.FC<NewJobProps> = ({setTasks}:NewJobProps) => {
         <input id="due" type="date" value={formData.due} onChange={handleChange}/>
       </div>
       <div className={style.actionsDiv}>
-        <button className={style.buttonJob} type="reset">Clear</button>
+        <button className={style.buttonJob} type="reset" onClick={()=>setFormData({id:0,title:"",desc:"",due:"",done:false})}>Clear</button>
         <button className={style.buttonJob} type="submit">+ Add</button>
       </div>
     </form>

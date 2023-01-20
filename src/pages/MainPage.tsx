@@ -15,7 +15,6 @@ export const MainPage: React.FC<MainPageProps> = ({
   tasks,
   setTasks,
 }: MainPageProps) => {
-  
   const markTaskDone = (currTask: taskType) => {
     setTasks((prev) =>
       prev.map((task) => {
@@ -37,13 +36,28 @@ export const MainPage: React.FC<MainPageProps> = ({
       })
     );
   };
+
+  const deleteTask = (currTask: taskType) => {
+    setTasks((prev) => prev.filter((task) => task.id !== currTask.id));
+  };
+
   return (
     <div>
       <Header />
       <NewJob setTasks={setTasks} />
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <List onClick={markTaskDone} title="Tasks" elements={tasks.filter((task)=>task.done===false)} />
-        <List onClick={unmarkTaskDone} title="Finished" elements={tasks.filter((task)=>task.done===true)} />
+        <List
+          onClick={markTaskDone}
+          title="Tasks"
+          elements={tasks.filter((task) => task.done === false)}
+          deleteTask={deleteTask}
+        />
+        <List
+          onClick={unmarkTaskDone}
+          title="Finished"
+          elements={tasks.filter((task) => task.done === true)}
+          deleteTask={deleteTask}
+        />
       </div>
       <Footer />
     </div>

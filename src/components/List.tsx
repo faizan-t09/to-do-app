@@ -7,10 +7,11 @@ import { taskType } from "../interfaces/TaskInterface";
 interface ListProps {
   title: string;
   elements: taskType[];
-  onClick:(task:taskType)=>void
+  onClick:(task:taskType)=>void;
+  deleteTask:(task:taskType)=>void
 }
 
-export const List: React.FC<ListProps> = ({ title, elements,onClick }) => {
+export const List: React.FC<ListProps> = ({ title, elements,onClick,deleteTask }) => {
   return (
     <div style={{ marginTop: "1em" }}>
       <div className={style.listHeading}>{title}</div>
@@ -21,6 +22,7 @@ export const List: React.FC<ListProps> = ({ title, elements,onClick }) => {
               key={element.id}
               element={element}
               onClick={onClick}
+              deleteTask={deleteTask}
             ></Task>
           );
         })}
