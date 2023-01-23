@@ -3,6 +3,7 @@ import { Header } from "../components/Header";
 import { NewJob } from "../components/NewJob";
 import { List } from "../components/List";
 import { Footer } from "../components/Footer";
+import style from "./MainPage.module.css";
 
 import { taskType } from "../interfaces/TaskInterface";
 
@@ -45,7 +46,7 @@ export const MainPage: React.FC<MainPageProps> = ({
     <div>
       <Header />
       <NewJob setTasks={setTasks} />
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div className={style.mainPageDisplay}>
         <List
           removeTask={markTaskDone}
           addTask={unmarkTaskDone}

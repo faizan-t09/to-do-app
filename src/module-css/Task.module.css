@@ -21,3 +21,8 @@
     right:0.5em;
     padding: 0.2em;
 }
+
+.done{
+    text-decoration: line-through;
+    text-decoration-color: red;
+}

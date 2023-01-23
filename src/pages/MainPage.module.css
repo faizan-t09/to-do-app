@@ -1,0 +1,10 @@
+.mainPageDisplay{
+    display: block;
+  }
+  
+  @media screen and (min-width: 1000px){
+    .mainPageDisplay{
+        display: flex;
+        justify-content: space-evenly;
+    }
+  }

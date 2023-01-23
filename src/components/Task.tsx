@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "../module-css/Task.module.css";
 import { taskType } from "../interfaces/TaskInterface";
 import deleteIcon from "../assets/delete-icon.svg";
@@ -14,13 +14,18 @@ export const Task: React.FC<TaskProps> = ({
   toggleTask,
   deleteTask,
 }: TaskProps) => {
+  const handleDrag = (event: React.DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData("task", JSON.stringify(element));
+  };
 
-  const handleDrag = (event : React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData("task",JSON.stringify(element));
-  }
+  useEffect(() => {
+    console.log(`Task component mounted for : ${element.title}`);
+    return () => {
+      console.log(`Task component unmounted for : ${element.title}`);
+    };
+  });
 
   return (
-
     <div
       className={style.taskElement}
       onClick={(e) => {
@@ -39,9 +44,21 @@ export const Task: React.FC<TaskProps> = ({
           deleteTask(element);
         }}
       />
-      <h5 style={{ margin: 0 }}>{element.title}</h5>
-      <p style={{ fontSize: "0.6em", margin: 0 }}>{element.desc}</p>
-      <p style={{ fontSize: "0.6em", margin: 0 }}>{element.due}</p>
+      <h5 className={element.done ? style.done : ""} style={{ margin: 0 }}>
+        {element.title}
+      </h5>
+      <p
+        className={element.done ? style.done : ""}
+        style={{ fontSize: "0.6em", margin: 0 }}
+      >
+        {element.desc}
+      </p>
+      <p
+        className={element.done ? style.done : ""}
+        style={{ fontSize: "0.6em", margin: 0 }}
+      >
+        {element.due}
+      </p>
     </div>
   );
 };
