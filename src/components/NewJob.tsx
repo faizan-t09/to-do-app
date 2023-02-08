@@ -10,7 +10,7 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
   const [formData, setFormData] = useState<taskType>({
     id: -1,
     title: "",
-    desc: "",
+    body: "",
     due: "",
     done: false,
   });
@@ -24,7 +24,7 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
         return prev.map((task) => {
           if (task.id === formData.id) {
             task.title = formData.title;
-            task.desc = formData.desc;
+            task.body = formData.body;
             task.due = formData.due;
           }
           return task;
@@ -35,7 +35,7 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
       setTasks((prev) => [...prev, { ...formData, id: randomId }]);
     }
 
-    setFormData({ id: -1, title: "", desc: "", due: "", done: false });
+    setFormData({ id: -1, title: "", body: "", due: "", done: false });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,10 +75,10 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
           Details :{" "}
         </label>
         <input
-          id="desc"
+          id="body"
           type="text"
           className={style.inputJob}
-          value={formData.desc}
+          value={formData.body}
           onChange={handleChange}
         />
       </div>
@@ -98,7 +98,7 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
           className={style.buttonJob}
           type="reset"
           onClick={() =>
-            setFormData({ id: -1, title: "", desc: "", due: "", done: false })
+            setFormData({ id: -1, title: "", body: "", due: "", done: false })
           }
         >
           Clear

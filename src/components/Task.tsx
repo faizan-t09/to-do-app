@@ -51,7 +51,7 @@ export const Task: React.FC<TaskProps> = ({
         className={element.done ? style.done : ""}
         style={{ fontSize: "0.6em", margin: 0 }}
       >
-        {element.desc}
+        {element.body}
       </p>
       <p
         className={element.done ? style.done : ""}
