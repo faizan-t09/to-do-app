@@ -1,22 +1,18 @@
 import "./App.css";
 import { MainPage } from "./pages/MainPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { todoActions } from "./redux/todoReducer";
 
 function App() {
-  // useEffect(() => {
-  //   fetch("https://jsonplaceholder.typicode.com/posts")
-  //     .then((response) => response.json())
-  //     .then((json) =>
-  //       setTasks(
-  //         json.map((element: taskType) => {
-  //           return { ...element, done: false };
-  //         })
-  //       )
-  //     );
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(todoActions.fetchTodos());
+  }, []);
 
   return (
     <div className="App">
-      <MainPage/>
+      <MainPage />
     </div>
   );
 }

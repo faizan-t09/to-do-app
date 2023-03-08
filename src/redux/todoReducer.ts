@@ -16,6 +16,10 @@ const todoSlice = createSlice({
   name: "todo",
   initialState: initialTodos,
   reducers: {
+    fetchTodos:()=>{},
+    initialize:(state,action)=>{
+      return [...action.payload]
+    },
     markTaskDone: (state, action) => {
       state.map((task) => {
         if (task.id === action.payload.id) {
