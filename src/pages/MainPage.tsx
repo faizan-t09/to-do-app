@@ -4,48 +4,30 @@ import { NewJob } from "../components/NewJob";
 import { List } from "../components/List";
 import { Footer } from "../components/Footer";
 import style from "./MainPage.module.css";
-
+import { useDispatch , useSelector} from "react-redux";
+import { todoActions } from "../redux/todoReducer";
+import { rootStateType } from '../redux/reducer';
 import { taskType } from "../interfaces/TaskInterface";
 
-interface MainPageProps {
-  tasks: taskType[];
-  setTasks: (value: taskType[] | ((prev: taskType[]) => taskType[])) => void;
-}
-
-export const MainPage: React.FC<MainPageProps> = ({
-  tasks,
-  setTasks,
-}: MainPageProps) => {
+export const MainPage: React.FC = () => {
+  const dispatch= useDispatch()
+  const tasks = useSelector((state:rootStateType) => state.todo)
   const markTaskDone = (currTask: taskType) => {
-    setTasks((prev) =>
-      prev.map((task) => {
-        if (task.id === currTask.id) {
-          task.done = true;
-        }
-        return task;
-      })
-    );
+    dispatch(todoActions.markTaskDone({id:currTask.id}))
   };
 
   const unmarkTaskDone = (currTask: taskType) => {
-    setTasks((prev) =>
-      prev.map((task) => {
-        if (task.id === currTask.id) {
-          task.done = false;
-        }
-        return task;
-      })
-    );
+    dispatch(todoActions.unmarkTaskDone({id:currTask.id}))
   };
 
   const deleteTask = (currTask: taskType) => {
-    setTasks((prev) => prev.filter((task) => task.id !== currTask.id));
+    dispatch(todoActions.deleteTask({id:currTask.id}))
   };
 
   return (
     <div>
       <Header />
-      <NewJob setTasks={setTasks} />
+      <NewJob />
       <div className={style.mainPageDisplay}>
         <List
           removeTask={markTaskDone}

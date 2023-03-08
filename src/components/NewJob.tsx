@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import {useDispatch} from 'react-redux';
 import style from "../module-css/NewJob.module.css";
 import { taskType } from "../interfaces/TaskInterface";
+import { todoActions } from "../redux/todoReducer";
 
-interface NewJobProps {
-  setTasks: (value: taskType[] | ((prev: taskType[]) => taskType[])) => void;
-}
+export const NewJob: React.FC = () => {
+  const dispatch = useDispatch();
 
-export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
   const [formData, setFormData] = useState<taskType>({
     id: -1,
     title: "",
@@ -20,19 +20,10 @@ export const NewJob: React.FC<NewJobProps> = ({ setTasks }: NewJobProps) => {
     if (formData.title === "") return;
 
     if (formData.id !== -1)
-      setTasks((prev) => {
-        return prev.map((task) => {
-          if (task.id === formData.id) {
-            task.title = formData.title;
-            task.body = formData.body;
-            task.due = formData.due;
-          }
-          return task;
-        });
-      });
+      dispatch(todoActions.updateTask(formData))
     else {
       let randomId = Math.floor(Math.random() * 1000);
-      setTasks((prev) => [...prev, { ...formData, id: randomId }]);
+      dispatch(todoActions.addTask({ ...formData, id: randomId }));
     }
 
     setFormData({ id: -1, title: "", body: "", due: "", done: false });

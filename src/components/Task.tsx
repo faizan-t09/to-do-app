@@ -18,12 +18,13 @@ export const Task: React.FC<TaskProps> = ({
     event.dataTransfer.setData("task", JSON.stringify(element));
   };
 
-  useEffect(() => {
-    console.log(`Task component mounted for : ${element.title}`);
-    return () => {
-      console.log(`Task component unmounted for : ${element.title}`);
-    };
-  });
+  // To see mounting and unmounting behavior
+  // useEffect(() => {
+  //   console.log(`Task component mounted for : ${element.title}`);
+  //   return () => {
+  //     console.log(`Task component unmounted for : ${element.title}`);
+  //   };
+  // });
 
   return (
     <div
